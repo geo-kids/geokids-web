@@ -1,0 +1,54 @@
+doctype html
+html
+  head
+    meta(name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no')
+    meta(charset='utf-8')
+    title= title
+    link(rel='stylesheet', href='/css/bootstrap.min.css')
+    link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css")
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    script(type='text/javascript', src='https://www.amcharts.com/lib/4/core.js')
+    script(type='text/javascript', src='https://www.amcharts.com/lib/4/maps.js')
+    script(type='text/javascript', src='https://www.amcharts.com/lib/4/geodata/worldLow.js')
+    script(type='text/javascript', src='https://www.amcharts.com/lib/4/themes/animated.js')
+    script(type='text/javascript', src='/javascripts/map.js')
+  body
+    header
+      nav.navbar.navbar-expand-md
+        div.container
+          div.navbar-header
+            button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarCollapse' aria-controls='navbarCollapse' aria-expanded='false' aria-label='Toggle navigation')
+              span.navbar-toggler-icon
+                #navbarCollapse.collapse.navbar-collapse
+            a.navbar-brand(href='/')
+              img(src='/images/logo.jpg' height='75')
+          div.navbar-collapse.collapse 
+            ul.nav.navbar-nav
+              li.nav-item.active
+                a.nav-link(href='/')
+                  | Home 
+                  span.sr-only (current)
+              li
+                a.nav-link(href='nosotros') Nosotros
+              li
+                a.nav-link(href='servicios') Servicios
+              li
+                a.nav-link(href='contacto') Contacto
+      
+    block content
+
+    footer
+      .sub-footer
+        .container
+          .row
+            .col-lg-6
+              .copyright
+                p
+                  span
+                    | © GeoKids - Test - 
+                  a(href='https://www.dbamastery.com' target='_blank') DBA Mastery
+
+    script(type='text/javascript', src='/js/jquery.min.js')
+    script(type='text/javascript', src='/js/popper.js')
+    script(type='text/javascript', src='/js/bootstrap.min.js')
+    script(type='text/javascript', src='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/js/all.min.js')
