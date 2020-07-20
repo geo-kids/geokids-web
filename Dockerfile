@@ -1,13 +1,18 @@
-FROM node:alpine AS builder
-COPY . ./frontend2
-WORKDIR /frontend2
+FROM node:10-alpine
 
-RUN apk update && \
-    apk upgrade && \
-    apk add git
-    
-RUN npm i
-RUN $(npm bin)/ng build --prod --build-optimizer=false --aot=false
+RUN mkdir -p /home/node/app/node_modules && chown -R node:node /home/node/app
 
-FROM nginx:alpine
-COPY --from=builder /frontend2/dist/frontend2/ /usr/share/nginx/html/
+WORKDIR /home/node/app
+
+COPY package*.json ./
+
+USER node
+
+RUN npm install
+
+COPY --chown=node:node . .
+
+ENV PORT=8080
+EXPOSE 8080
+
+CMD [ "npm", "start" ]

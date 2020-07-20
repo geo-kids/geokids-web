@@ -7,11 +7,12 @@ html
     link(rel='stylesheet', href='/css/bootstrap.min.css')
     link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css")
     link(rel='stylesheet', href='/stylesheets/style.css')
-    script(type='text/javascript', src='https://www.amcharts.com/lib/4/core.js')
-    script(type='text/javascript', src='https://www.amcharts.com/lib/4/maps.js')
-    script(type='text/javascript', src='https://www.amcharts.com/lib/4/geodata/worldLow.js')
-    script(type='text/javascript', src='https://www.amcharts.com/lib/4/themes/animated.js')
-    script(type='text/javascript', src='/javascripts/map.js')
+    //- 
+      script(type='text/javascript', src='https://www.amcharts.com/lib/4/core.js')
+      script(type='text/javascript', src='https://www.amcharts.com/lib/4/maps.js')
+      script(type='text/javascript', src='https://www.amcharts.com/lib/4/geodata/worldLow.js')
+      script(type='text/javascript', src='https://www.amcharts.com/lib/4/themes/animated.js')
+      script(type='text/javascript', src='/javascripts/map.js')
   body
     header
       nav.navbar.navbar-expand-md
@@ -24,16 +25,16 @@ html
               img(src='/images/logo.jpg' height='75')
           div.navbar-collapse.collapse 
             ul.nav.navbar-nav
-              li.nav-item.active
+              li(class=(name === "index" ? "nav-item active" : 'nav-item'))
                 a.nav-link(href='/')
                   | Home 
                   span.sr-only (current)
-              li
-                a.nav-link(href='nosotros') Nosotros
-              li
-                a.nav-link(href='servicios') Servicios
-              li
-                a.nav-link(href='contacto') Contacto
+              li(class=(name === "continents" ? "nav-item active" : 'nav-item'))
+                a.nav-link(href='/continents') Continents
+              li(class=(name === "regions" ? "nav-item active" : 'nav-item'))
+                a.nav-link(href='/regions') Regions
+              li(class=(name === "countries" ? "nav-item active" : 'nav-item'))
+                a.nav-link(href='/countries') Countries
       
     block content
 
@@ -45,8 +46,10 @@ html
               .copyright
                 p
                   span
-                    | © GeoKids - Test - 
-                  a(href='https://www.dbamastery.com' target='_blank') DBA Mastery
+                    | © GeoKids - Development by 
+                    a(href='http://www.dbamastery.com' target='_blank') DBA Mastery
+                    | &nbsp; and &nbsp;
+                    a(href='https://github.com/yovafree' target='_blank') Yova de León
 
     script(type='text/javascript', src='/js/jquery.min.js')
     script(type='text/javascript', src='/js/popper.js')

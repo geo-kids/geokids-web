@@ -1,31 +1,25 @@
-Ref_
+# Geo Kids Web
 
-https://developer.mozilla.org/es/docs/Learn/Server-side/Express_Nodejs/skeleton_website
-https://blog.nubecolectiva.com/como-crear-una-pagina-web-con-node-js-10-express-js-4-y-bootstrap-4-parte-1/
-https://www.sitepoint.com/build-simple-beginner-app-node-bootstrap-mongodb/
+Container that allows launching a website for the technical demo of the GeoKids game.
 
-Estructura del proyecto
+### Start in dev mode
 
-    /express-locallibrary-tutorial
-        app.js
-        /bin
-            www
-        package.json
-        /node_modules
-            [about 4,500 subdirectories and files]
-        /public
-            /images
-            /javascripts
-            /stylesheets
-                style.css
-        /routes
-            index.js
-            users.js
-        /views
-            error.pug
-            index.pug
-            layout.pug
-
-Start
-
+```
 npm run devstart
+```
+
+### Build the container
+```
+docker build --force-rm -t geokids/geokids-web:1.0 .
+```
+
+### Run the container
+```
+docker run -p 8083:8080
+    \ -e DB_USER=<db_user>
+    \ -e DB_PASS="<db_pass>"
+    \ -e DB_HOST=<db_hostname>
+    \ -e DB_PORT=<db_port> 
+    \ -e DB_NAME=<db_name> 
+    \ --name geokids-web -d geokids/geokids-web:1.0
+```

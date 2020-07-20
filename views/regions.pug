@@ -17,23 +17,19 @@ block content
   main.container(role='main')
     .row
       .col-md-12
-        h1.aligncenter Continents
+        h1.aligncenter Regions
         table.table.table-bordered.table-hover
           tr
             td ID
             td Continent
-          for continent in continents
+            td Regions
+          for region in regions
             tr
-              td= continent.continent_id
+              td= region.region_id
+              td= region.continent
               td
-                a(href='/regions/'+continent.continent_id) #{continent.continent}
+                a(href='/countries/'+region.region_id) #{region.region}
   
   br
   br
   br
-	
-  //- 
-    #chartdiv
-  
-
-  
