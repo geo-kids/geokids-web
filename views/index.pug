@@ -5,9 +5,8 @@ block content
     .container
       .row  
         .col-lg-2
-          img(src='/images/logo.jpg' height='200')
+          img(src='/images/logo.jpg' height='150')
         .col-lg-9
-          br
           br
           br
           h1.aligncenter Geo Kids - Learning by playing
@@ -16,17 +15,8 @@ block content
   br
   main.container(role='main')
     .row
-      .col-md-12
-        h1.aligncenter Continents
-        table.table.table-bordered.table-hover
-          tr
-            td ID
-            td Continent
-          for continent in continents
-            tr
-              td= continent.continent_id
-              td
-                a(href='/regions/'+continent.continent_id) #{continent.continent}
+      .col-md-12.aligncenter
+        img(src='/images/img_home.jpg' height='400')
   
   br
   br

@@ -105,7 +105,7 @@ router.get('/regions', function(req, res, next) {
 
   db.any("SELECT r.region_id, c.continent, r.region FROM public.regions r INNER JOIN public.continents c ON r.continent_id = c.continent_id ")
     .then(function (data) {
-       for (var i = 0; i < data.length; i++) {
+      for (var i = 0; i < data.length; i++) {
           var item = {
             'region_id':data[i].region_id,
             'continent':data[i].continent,
