@@ -13,7 +13,7 @@ var db = pgp(`postgres://${user}:${pass}@${host}:${db_port}/${db_name}`);
 router.get('/', function(req, res, next) {
   var continentsList = [];
 
-  db.any("SELECT * FROM public.continents")
+  db.any("SELECT * FROM public.vw_continents")
     .then(function (data) {
        for (var i = 0; i < data.length; i++) {
           var item = {
@@ -35,7 +35,7 @@ router.get('/', function(req, res, next) {
 router.get('/regions/:id', function(req, res, next) {
   var regionsList = [];
 
-  db.any("SELECT r.region_id, c.continent, r.region FROM public.regions r INNER JOIN public.continents c ON r.continent_id = c.continent_id  WHERE c.continent_id = " + req.params.id)
+  db.any("SELECT r.region_id, c.continent, r.region FROM public.vw_regions r INNER JOIN public.vw_continents c ON r.continent_id = c.continent_id  WHERE c.continent_id = " + req.params.id)
     .then(function (data) {
        for (var i = 0; i < data.length; i++) {
           var item = {
@@ -58,7 +58,7 @@ router.get('/regions/:id', function(req, res, next) {
 router.get('/countries/:id', function(req, res, next) {
   var countriesList = [];
 
-  db.any("SELECT co.country_id, co.country, c.continent, r.region FROM public.countries co INNER JOIN public.regions r ON co.region_id = r.region_id INNER JOIN public.continents c ON r.continent_id = c.continent_id WHERE r.region_id = " + req.params.id)
+  db.any("SELECT co.country_id, co.country, c.continent, r.region FROM public.vw_countries co INNER JOIN public.vw_regions r ON co.region_id = r.region_id INNER JOIN public.vw_continents c ON r.continent_id = c.continent_id WHERE r.region_id = " + req.params.id)
     .then(function (data) {
        for (var i = 0; i < data.length; i++) {
           var item = {
@@ -81,7 +81,7 @@ router.get('/countries/:id', function(req, res, next) {
 router.get('/continents', function(req, res, next) {
   var continentsList = [];
 
-  db.any("SELECT * FROM public.continents")
+  db.any("SELECT * FROM public.vw_continents")
     .then(function (data) {
        for (var i = 0; i < data.length; i++) {
           var item = {
@@ -103,7 +103,7 @@ router.get('/continents', function(req, res, next) {
 router.get('/regions', function(req, res, next) {
   var regionsList = [];
 
-  db.any("SELECT r.region_id, c.continent, r.region FROM public.regions r INNER JOIN public.continents c ON r.continent_id = c.continent_id ")
+  db.any("SELECT r.region_id, c.continent, r.region FROM public.vw_regions r INNER JOIN public.vw_continents c ON r.continent_id = c.continent_id ")
     .then(function (data) {
       for (var i = 0; i < data.length; i++) {
           var item = {
@@ -126,7 +126,7 @@ router.get('/regions', function(req, res, next) {
 router.get('/countries', function(req, res, next) {
   var countriesList = [];
 
-  db.any("SELECT co.country_id, co.country, c.continent, r.region FROM public.countries co INNER JOIN public.regions r ON co.region_id = r.region_id INNER JOIN public.continents c ON r.continent_id = c.continent_id")
+  db.any("SELECT co.country_id, co.country, c.continent, r.region FROM public.vw_countries co INNER JOIN public.vw_regions r ON co.region_id = r.region_id INNER JOIN public.vw_continents c ON r.continent_id = c.continent_id")
     .then(function (data) {
        for (var i = 0; i < data.length; i++) {
           var item = {
