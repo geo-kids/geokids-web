@@ -18,13 +18,15 @@ block content
         br
         h1.aligncenter Continents
       for continent in continents
-        .col-md-3.continent_ref
-          h3.aligncenter=continent.continent
-          a(href='/regions/'+continent.continent_id)
-            img(src='/images/continent_'+continent.continent_id+'.png' class='img-thumbnail image_thumbnail')
-          .middle
-            .text-middle
-              a(href='/regions/'+continent.continent_id) Show Regions
+        .col-md-3
+          .card.continent_ref
+            a(href='/regions/'+continent.continent_id)
+              img(src='/images/continent_'+continent.continent_id+'.png' class='img-thumbnail image_thumbnail')
+            .middle
+              .text-middle
+                a(href='/regions/'+continent.continent_id) Show Regions
+            .card-body
+              h3.title.aligncenter #{continent.continent}
           
           
   

@@ -33,13 +33,15 @@ block content
         hr
         br
       for region in regions
-        .col-md-3.continent_ref
-          h4.aligncenter=region.region
-          a(href='/countries/'+region.region_id)
-            img(src='/images/region_'+region.continent_id+'.png' class='img-thumbnail image_thumbnail')
-          .middle
-            .text-middle
-              a(href='/countries/'+region.region_id) Show Countries
+        .col-md-3
+          .card.continent_ref
+            a(href='/countries/'+region.region_id)
+              img(src='/images/region_'+region.continent_id+'.png' class='img-thumbnail image_thumbnail')
+            .middle
+              .text-middle
+                a(href='/countries/'+region.region_id) Show Countries
+            .card-body
+                h4.title.aligncenter #{region.region}
   
   br
   br
