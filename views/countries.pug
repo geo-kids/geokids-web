@@ -38,7 +38,7 @@ block content
         .col-md-3
           .card
             if country.flag!='NULL'
-              img(src=country.flag class='card-img-top' height="175px")
+              img(src=country.flag class='card-img-top' onerror="this.onerror=null;this.src='https://via.placeholder.com/250x175.png?text=No+Flag';" height="175px")
             else
               img(src='https://via.placeholder.com/250x175.png?text=No+Flag' class='card-img-top')
             .card-body

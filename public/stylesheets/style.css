@@ -1860,3 +1860,7 @@ section.hero-text2 {
 .card{
 	margin-bottom: 20px;
 }
+
+.card-img-top{
+	border-bottom: 1px solid rgba(0,0,0,.125);
+}
