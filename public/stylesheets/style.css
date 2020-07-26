@@ -135,11 +135,6 @@ header .navbar {
     padding: 0;
 }
 
-header .navbar-nav > li  {
-    /* padding-bottom: 12px; */
-    /* padding-top: 12px; */
-}
-
 header  .navbar-nav > li > a {
     padding-bottom: 6px;
     padding-top: 5px;
@@ -343,7 +338,6 @@ right:0px;
   margin: 0 auto;
   padding: 1px;
   position: absolute;
-  vertical-align: bottom;
   text-align: center;
   background-color: rgba(0, 0, 0, 0.06);
   bottom: 9%;
@@ -709,10 +703,6 @@ form#commentform textarea {
 	color: #7F8289;
 	font-size: 16px;
 	display: block;	
-}
-
-.work-nav #filters li a:hover {
-
 }
 
 .work-nav #filters li a.selected {
@@ -1170,9 +1160,6 @@ color: #222;
 	border-bottom:none;
 	display:block;
 	color:#fff;
-}
-.pricing-box-item.activeItem .pricing-heading h3 {
-	 
 }
 
 .pricing-box-item .pricing-heading h3 strong {
