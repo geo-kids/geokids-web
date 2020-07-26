@@ -3,14 +3,22 @@ Author URI: http://webthemez.com/
 -------------------------------------------------------*/
 
 @import url('http://fonts.googleapis.com/css?family=Noto+Serif:400,400italic,700|Open+Sans:400,600,700'); 
-
+html, body{ height:100%; margin:0; }
 body {
 	font-family:'Open Sans', Arial, sans-serif;
 	font-size:14px;
 	font-weight:300;
 	line-height:1.6em;
 	color:#656565;
+	display:flex; 
+	flex-direction:column; 
 }
+  
+  footer{
+	margin-top:auto; 
+  }
+
+html, body{ height:100%; margin:0; }
 
 a:active {
 	outline:0;
@@ -1256,7 +1264,7 @@ footer .widget .flickr_badge img {
 
   
 footer{
-	padding:50px 0 0 0;
+	padding:50px 0 20px 0;
 	color:#f8f8f8;
 }
 
@@ -1810,4 +1818,58 @@ padding:50px 0
 #chartdiv {
 	width: 100%;
 	height: 500px;
+}
+
+section.hero-text2 {
+	background: #DE3B69;
+	padding: 10px 0;
+	color: #fff !important;
+}
+
+.hero-text2 h3{
+	color:#fff;
+}
+
+.continent_ref:hover a img {
+	opacity: 0.3;
+}
+
+.image_thumbnail {
+	opacity: 1;
+	display: block;
+	width: 100%;
+	height: auto;
+	transition: .5s ease;
+	backface-visibility: hidden;
+} 
+
+.middle {
+	transition: .5s ease;
+	opacity: 0;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	padding:0px 0px 0px 0px;
+	transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%)
+	
+}
+
+.continent_ref:hover .middle {
+	opacity: 1;
+}
+  
+.text-middle {
+	background-color: #DE3B69;
+	text-align: center;
+}
+
+.text-middle a, .text-middle a:hover{
+	color: #fff;
+	text-decoration: none;
+	padding: 5px 5px;
+}
+
+.card{
+	margin-bottom: 20px;
 }

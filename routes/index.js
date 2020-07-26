@@ -35,19 +35,22 @@ router.get('/', function(req, res, next) {
 router.get('/regions/:id', function(req, res, next) {
   var regionsList = [];
 
-  db.any("SELECT r.region_id, c.continent, r.region FROM public.vw_regions r INNER JOIN public.vw_continents c ON r.continent_id = c.continent_id  WHERE c.continent_id = " + req.params.id)
+  db.any("SELECT r.region_id, c.continent_id, c.continent, r.region FROM public.vw_regions r INNER JOIN public.vw_continents c ON r.continent_id = c.continent_id  WHERE c.continent_id = " + req.params.id)
     .then(function (data) {
        for (var i = 0; i < data.length; i++) {
           var item = {
             'region_id':data[i].region_id,
+            'continent_id':data[i].continent_id,
             'continent':data[i].continent,
             'region':data[i].region
           }
           regionsList.push(item);
       }
 
-        console.log("DATA:", data);
-        res.render('regions', {name:'regions', title: 'Regions', 'regions': regionsList });
+      console.log("DATA:", data);
+
+
+      res.render('regions', {name:'regions', title: 'Regions', info_continent: regionsList[0], 'regions': regionsList });
     })
     .catch(function (error) {
         console.log("ERROR:", error);
@@ -58,20 +61,23 @@ router.get('/regions/:id', function(req, res, next) {
 router.get('/countries/:id', function(req, res, next) {
   var countriesList = [];
 
-  db.any("SELECT co.country_id, co.country, c.continent, r.region FROM public.vw_countries co INNER JOIN public.vw_regions r ON co.region_id = r.region_id INNER JOIN public.vw_continents c ON r.continent_id = c.continent_id WHERE r.region_id = " + req.params.id)
+  db.any("SELECT co.country_id, co.country, c.continent, c.continent_id, r.region_id, r.region, co.flag FROM public.vw_countries co INNER JOIN public.vw_regions r ON co.region_id = r.region_id INNER JOIN public.vw_continents c ON r.continent_id = c.continent_id WHERE r.region_id = " + req.params.id)
     .then(function (data) {
        for (var i = 0; i < data.length; i++) {
           var item = {
             'country_id':data[i].country_id,
+            'region_id':data[i].region_id,
+            'continent_id':data[i].continent_id,
             'country':data[i].country,
             'continent':data[i].continent,
-            'region':data[i].region
+            'region':data[i].region,
+            'flag':data[i].flag
           }
           countriesList.push(item);
       }
 
         console.log("DATA:", data);
-        res.render('countries', {name:'countries', title: 'Countries', 'countries': countriesList });
+        res.render('countries', {name:'countries', title: 'Countries',info_region: countriesList[0], 'countries': countriesList });
     })
     .catch(function (error) {
         console.log("ERROR:", error);
@@ -103,11 +109,12 @@ router.get('/continents', function(req, res, next) {
 router.get('/regions', function(req, res, next) {
   var regionsList = [];
 
-  db.any("SELECT r.region_id, c.continent, r.region FROM public.vw_regions r INNER JOIN public.vw_continents c ON r.continent_id = c.continent_id ")
+  db.any("SELECT r.region_id, c.continent_id, c.continent, r.region FROM public.vw_regions r INNER JOIN public.vw_continents c ON r.continent_id = c.continent_id ")
     .then(function (data) {
       for (var i = 0; i < data.length; i++) {
           var item = {
             'region_id':data[i].region_id,
+            'continent_id':data[i].continent_id,
             'continent':data[i].continent,
             'region':data[i].region
           }
@@ -126,14 +133,17 @@ router.get('/regions', function(req, res, next) {
 router.get('/countries', function(req, res, next) {
   var countriesList = [];
 
-  db.any("SELECT co.country_id, co.country, c.continent, r.region FROM public.vw_countries co INNER JOIN public.vw_regions r ON co.region_id = r.region_id INNER JOIN public.vw_continents c ON r.continent_id = c.continent_id")
+  db.any("SELECT co.country_id, co.country, c.continent, c.continent_id, r.region_id, r.region, co.flag FROM public.vw_countries co INNER JOIN public.vw_regions r ON co.region_id = r.region_id INNER JOIN public.vw_continents c ON r.continent_id = c.continent_id")
     .then(function (data) {
        for (var i = 0; i < data.length; i++) {
           var item = {
             'country_id':data[i].country_id,
+            'region_id':data[i].region_id,
+            'continent_id':data[i].continent_id,
             'country':data[i].country,
             'continent':data[i].continent,
-            'region':data[i].region
+            'region':data[i].region,
+            'flag':data[i].flag
           }
           countriesList.push(item);
       }

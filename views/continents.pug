@@ -1,32 +1,32 @@
 extends layout
 
 block content
-  section.hero-text
+  section.hero-text2
     .container
       .row  
         .col-lg-2
-          img(src='/images/logo.jpg' height='200')
+          img(src='/images/logo.jpg' height='75')
         .col-lg-9
           br
-          br
-          br
-          h1.aligncenter Geo Kids - Learning by playing
+          h3.aligncenter Geo Kids - Learning by playing
           span.clear.spacer_responsive_hide_mobile
   br
   br
   main.container(role='main')
     .row
       .col-md-12
+        br
         h1.aligncenter Continents
-        table.table.table-bordered.table-hover
-          tr
-            td ID
-            td Continent
-          for continent in continents
-            tr
-              td= continent.continent_id
-              td
-                a(href='/regions/'+continent.continent_id) #{continent.continent}
+      for continent in continents
+        .col-md-3.continent_ref
+          h3.aligncenter=continent.continent
+          a(href='/regions/'+continent.continent_id)
+            img(src='/images/continent_'+continent.continent_id+'.png' class='img-thumbnail image_thumbnail')
+          .middle
+            .text-middle
+              a(href='/regions/'+continent.continent_id) Show Regions
+          
+          
   
   br
   br

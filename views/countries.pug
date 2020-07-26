@@ -1,35 +1,56 @@
 extends layout
 
 block content
-  section.hero-text
+  section.hero-text2
     .container
       .row  
         .col-lg-2
-          img(src='/images/logo.jpg' height='200')
+          img(src='/images/logo.jpg' height='75')
         .col-lg-9
           br
-          br
-          br
-          h1.aligncenter Geo Kids - Learning by playing
+          h3.aligncenter Geo Kids - Learning by playing
           span.clear.spacer_responsive_hide_mobile
   br
   br
   main.container(role='main')
     .row
       .col-md-12
-        h1.aligncenter Countries
-        table.table.table-bordered.table-hover
-          tr
-            td Continent
-            td Region
-            td ID
-            td Country
-          for country in countries
-            tr
-              td=country.continent
-              td=country.region
-              td=country.country_id
-              td=country.country
+        br
+      .col-md-2.continent_ref
+        if info_region!=null
+          a(href='/regions/'+info_region.continent_id)
+            img(src='/images/region_'+info_region.continent_id+'.png' class='img-thumbnail' height="50px")
+          .middle
+            .text-middle
+              a(href='/regions/'+info_region.continent_id)|Return to regions
+      .col-md-9
+        br
+        if info_region!=null
+          h1.aligncenter Region: #{info_region.region}
+          h4.aligncenter Countries
+        else
+          h1.aligncenter All countries of the world
+      .col-md-12
+        hr
+        br
+
+      for country in countries
+        .col-md-3
+          .card
+            if country.flag!='NULL'
+              img(src=country.flag class='card-img-top' height="175px")
+            else
+              img(src='https://via.placeholder.com/250x175.png?text=No+Flag' class='card-img-top')
+            .card-body
+              h5.title #{country.country}
+              .card-text
+                b Continent: 
+                  a(href='/regions/'+country.continent_id) #{country.continent}
+                br
+                b Region: 
+                  a(href='/countries/'+country.region_id) #{country.region}
+                br
+                b Country ID: #{country.country_id}
   
   br
   br
